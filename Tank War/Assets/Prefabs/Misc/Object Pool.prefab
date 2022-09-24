@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5812531681988724617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5812531681988724619}
+  - component: {fileID: 5812531681988724616}
+  m_Layer: 0
+  m_Name: Object Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5812531681988724619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5812531681988724617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5812531681988724616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5812531681988724617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3e4e8ccca973d4bad4062a7fef61a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefabs:
+  - {fileID: 6584125544737127454, guid: ee39a60d6ae730248b09b72ea6198431, type: 3}
+  - {fileID: 8142841792962868798, guid: 56e1a27c533b6de47a9db385476ed027, type: 3}
+  - {fileID: 6111788666245522752, guid: 2de9de552d759bb4b9a0b042d2fc3b8b, type: 3}
+  - {fileID: 2015635507052055806, guid: 373d0cf33ce9b11459aaf400775ce2b5, type: 3}
+  - {fileID: 5439126098144664733, guid: e856e43a8f06b6c43bc08e97b325c5ff, type: 3}
+  - {fileID: 2572134671537904266, guid: 7ea34e7e4d2704647a27780bd577a59c, type: 3}
+  - {fileID: 7479803837287177085, guid: a814dc6d772d4464a911648d874474e9, type: 3}
+  - {fileID: 871718176702205545, guid: 6a9159b475d4b6d448201cb16f8bbe20, type: 3}
+  - {fileID: 8133850813141054035, guid: f8fc9caf23c31d7408ebfe95c10221ed, type: 3}
+  - {fileID: 7212254891983954340, guid: 061424e4cb3f39b479e6755fbfc29216, type: 3}
+  - {fileID: 2365300164190368216, guid: 1ba8c1019c720544cb9bbd4f7e4ef702, type: 3}
+  - {fileID: 201597573142923455, guid: 68950e70563e9e9498a52e647706a730, type: 3}
+  - {fileID: 6106827479989796110, guid: 6f3c75f99c286114391dd4f6d1245497, type: 3}
+  - {fileID: 7957284282354106721, guid: 90ff20d25e90fee439a36490b858ea1c, type: 3}
+  - {fileID: 3844460531076637900, guid: 0acdab1034ded4546b49a3b4e5646aa1, type: 3}
+  - {fileID: 5874681237428714606, guid: 288f901aa7fc69c4b9da8cd31d6adaff, type: 3}
+  amountToBuffer: 
+  defaultBufferAmount: 5
