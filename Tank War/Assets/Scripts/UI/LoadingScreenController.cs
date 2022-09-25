@@ -171,7 +171,7 @@ public class LoadingScreenController : MonoBehaviour
         "Access to some of our latest developed armament is granted, make good use of it. ",
 
         "To effectively cut off the enemy command chain, we must dispose of their main command center. " +
-            "Considering that there is only a single road leading to it and recent failures, " +
+            "Knowing that there is a single bridge connecting to the main land, " +
             "they cannot have evacuated all personnels and documents, but that also means the enemy won't make it easy for us."
     };
 
@@ -189,14 +189,17 @@ public class LoadingScreenController : MonoBehaviour
             "the shell's main function is to seize and allow complete remote control of any vehicle it attached to.",
 
         "Super Tank - \"Peace Breaker\" Prototype Tank, designated MT77 is the latest combination of our and *acquired* technology. " +
-           "Protected by the latest [REDACTED] composite hull, it is a moving fortress with advanced firepower systems. " +
+           "Protected by the latest [REDACTED] composite hull, it is a moving fortress with multiple advanced firepower systems. " +
+            "Designed to operate on diffirent terrains & situations, it can assume any roles on the battlefield." +
             "Due to the cost and complexity, only 1 prototype has been fielded up till now.",
 
-        "Super Tank - \"RAM\" V1 was a long discarded model, originally intended to be the first super tank. " +
+        "Super Tank - \"Golden Ram\" V1 was a long discarded model, originally intended to be the first super tank. " +
             "Mainly borrowed from our opposition's design, the tank features an exoframe covered by thick layers of armor. " +
             "This, however, combined with a rather small hull & engine left no room for extra firepower due to overweight. " +
-            "Thanks to our R&D team, changes are made for this juggernaut to finally see some action, " +
-            "maintaining its impressive defense while installed new offensive ability.",
+            "Thanks to our R&D team, changes are made for this juggernaut to finally see some action " +
+            "without sacrificing any of its defense strength.",
+
+        "Super Tank - \"Scale Break\" ",
 
           "Missile ignores obstacles and lock on until it reaches the target. " +
             "Shoot it down if you ever find yourself in its aim."

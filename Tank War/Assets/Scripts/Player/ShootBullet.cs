@@ -28,27 +28,34 @@ public class ShootBullet : MonoBehaviour
     private bool readyToFire = true;
 
     public float firingForce = 0.02f;
-    public float reloadTime = 1.0f;
 
-    // Start is called before the first frame update
+    float normReloadTime;
+    public float reloadTime = 1.5f;
+
+
     void Start()
     {
-        //reloadText.enabled = false;
-        //shellCount[(int)Shell.NORM] = 999;
-        //shellCount[(int)Shell.EMP] = 15;
-        //shellCount[(int)Shell.CONV] = 1;
+        normReloadTime = reloadTime;
     }
 
     public IEnumerator checkReload()
     {
-        commController.WhenReload(reloadTime);
+        if (commController) commController.WhenReload(reloadTime);
         yield return new WaitForSeconds(reloadTime);
         readyToFire = true;
+    }
+
+    IEnumerator ResetReloadTimeAfterSkill(float effectTime)
+    {
+        yield return new WaitForSeconds(effectTime);
+        reloadTime = normReloadTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (shellCount[0] <= 0) shellCount[0] = 1000;
+
         if (Input.GetButtonDown("Fire1"))
         {
             if (EventSystem.current.IsPointerOverGameObject()) return; 
@@ -94,6 +101,13 @@ public class ShootBullet : MonoBehaviour
             readyToFire = false;
             currentReloadCoroutine = StartCoroutine(checkReload());
         }
+    }
+
+    public void ReduceReloadTimeBySkill(float reduceMultiplier, float effectTime)
+    {
+        reloadTime = reloadTime * reduceMultiplier;
+        Debug.Log(reloadTime);
+        StartCoroutine(ResetReloadTimeAfterSkill(effectTime));
     }
 
     //void TurretFollowMouseDirection()

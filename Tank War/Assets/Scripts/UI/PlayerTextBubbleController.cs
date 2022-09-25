@@ -10,14 +10,21 @@ public class PlayerTextBubbleController : MonoBehaviour
     [SerializeField]
     Text comm;
 
-    static string[] reload = { "Reloading!", "Shell loading!" };
+    static string[] reload = { "Reloading!", "Shell Change!" };
 
     static string hit = "Hit!";
 
-    static string[] gotHit = { "Taking fire!", "We're hit!", "Under attack!"};
+    static string[] gotHit = { "Under Fire!", "We're Hit!", "Taking Damage!"};
 
-    static string empBomb = "EMP bomb ready!";
-    static string barrage = "Barrage ready!";
+    static Dictionary<GlobalVar.skill, string> skillCommMap = new Dictionary<GlobalVar.skill, string>
+    {
+        {GlobalVar.skill.EMP_BOMB, "EMP Bomb!"},
+        {GlobalVar.skill.BARRAGE, "Barrage Set!" },
+        {GlobalVar.skill.MISSILE_LOCK, "Missile Lock!" },
+        {GlobalVar.skill.SHIELD, "Shield On!" },
+        {GlobalVar.skill.PLASMA_CANNON, "Plasma Cannon!" },
+        {GlobalVar.skill.SYS_OVERDRIVE, "Overdrive!" }
+    };
 
     Coroutine currentCoroutine;
     
@@ -86,9 +93,9 @@ public class PlayerTextBubbleController : MonoBehaviour
         currentStatus = status.SKILL;
         if (skill == GlobalVar.skill.EMP_BOMB)
         {
-            comm.text = empBomb;
+            
         }
-        if (skill == GlobalVar.skill.BARRAGE) { comm.text = barrage; }
+        if (skill == GlobalVar.skill.BARRAGE) { }
 
         textBubble.SetActive(true);
         if (currentCoroutine != null) { StopCoroutine(currentCoroutine); }

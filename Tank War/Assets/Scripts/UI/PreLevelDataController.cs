@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//create and hold the player gameobject before level loading 
+//script in level can get player components from here if not null
 public class PreLevelDataController : MonoBehaviour
 {
     public static PreLevelDataController instance;
@@ -12,6 +14,7 @@ public class PreLevelDataController : MonoBehaviour
     Vector3 playerStartPoint;
 
     int tankIndex = -1;
+    [HideInInspector]
     public bool holdPlayer = false;
     public GameObject tankSet;
     public GameObject player;

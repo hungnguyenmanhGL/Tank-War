@@ -89,23 +89,27 @@ public class MainMenuController : MonoBehaviour
 
     public void OnChooseTankButtonClicked()
     {
-        string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
-        for (int i=0; i<chooseTankButtonList.Count; i++)
+        if (!levelLoading)
         {
-            if (chooseTankButtonList[i].name == name)
+            string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
+            for (int i = 0; i < chooseTankButtonList.Count; i++)
             {
-                PreLevelDataController.instance.SetTankIndex(i);
+                if (chooseTankButtonList[i].name == name)
+                {
+                    PreLevelDataController.instance.SetTankIndex(i);
+                }
             }
+            levelLoading = true;
+            LoadingScreenController.instance.GetLoadingScreenForLevel(level - 1);
+            LoadingScreenController.instance.SetLoadingOperation(SceneManager.LoadSceneAsync("Level " + level));
+            PreLevelDataController.instance.CreateTankSetForLevel(level);
+            LoadingScreenController.instance.SetDataLoadDone();
         }
-
-        LoadingScreenController.instance.GetLoadingScreenForLevel(level - 1);
-        LoadingScreenController.instance.SetLoadingOperation(SceneManager.LoadSceneAsync("Level " + level));
-        PreLevelDataController.instance.CreateTankSetForLevel(level);
-        LoadingScreenController.instance.SetDataLoadDone();
     }
     
     public void OnSharedBackButtonClicked()
     {
+        if (levelLoading) return;
         currentPanel.SetActive(false);
         sharedBackButton.SetActive(false);
         mainMenuPanel.SetActive(true);
@@ -117,6 +121,7 @@ public class MainMenuController : MonoBehaviour
     }
     public void ReturnToLevelSelectPanel()
     {
+        if (levelLoading) return;
         levelLoading = false;
         tankSelectPanel.SetActive(false);
         levelSelectPanel.SetActive(true);

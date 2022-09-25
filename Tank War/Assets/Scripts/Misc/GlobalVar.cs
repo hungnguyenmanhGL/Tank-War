@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GlobalVar
 {
-    public enum skill {EMP_BOMB, BARRAGE, MISSILE_LOCK, SHIELD, SHOOT_LASER, PLASMA_CANNON};
+    public enum skill {EMP_BOMB, BARRAGE, MISSILE_LOCK, SHIELD, SHOOT_LASER, PLASMA_CANNON, SYS_OVERDRIVE};
 
     public static string obsBlockShellTag = "Obstacle";
     public static string obsBlockTankTag = "Low Obstacle";
@@ -134,9 +134,10 @@ public static class GlobalVar
     {
         {skill.EMP_BOMB, "EMP Bomb"},
         {skill.BARRAGE, "Barrage" },
-        {skill.MISSILE_LOCK, "A-Missiles" },
+        {skill.MISSILE_LOCK, "Quad Missile" },
         {skill.SHIELD, "Shield" },
-        {skill.PLASMA_CANNON, "Plasma Cannon" }
+        {skill.PLASMA_CANNON, "Plasma Cannon" },
+        {skill.SYS_OVERDRIVE, "Overdrive" }
     };
     public static Dictionary<int, Vector3> playerSpawnMap = new Dictionary<int, Vector3>
     {
