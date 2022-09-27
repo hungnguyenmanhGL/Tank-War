@@ -23,23 +23,22 @@ public class Level4Controller : LevelController
     static string[] startCutsceneDialog =
     {
         "HQ: The enemy regrouped faster than we thought. " +
-            "They even managed to set up a considerable defense preventing us from entering their main command center. " +
+            "They even managed to gather a considerable armored force waiting for us. " +
             "As this is the only way, we have no other option. " +
-            "Your primary targets will be to neutralize 6 defense turret holding us down this road. " +
-            "Keep in mind they are holding a choke point, so advance with discreet. ",
-        "Operator: HQ wants you to spearhead our assasult using our new tank prototype. " +
-            "Reinforcement will be sent to support you, but the enemy will likely do the same so prepare for a tug-of-war situation. " +
-            "Focus on the enemy turrets while our force distract enemy fire.",
-        "Operator: Your new tank is designed for this kind of demolition. While losing access to shell changing mechanism, it packs more than " +
-            "enough destructive firepower to compensate. Its auxilary weapon systems matches an artillery barrage, but require time to cooldown after use. " +
-            "Same goes for the EMP-infused grenade launcher." +
-            "That'll be all."
+            "Your primary targets will be to neutralize 6 defense turret holding us down on he sides of the bridge. " +
+            "Keep in mind they are holding a choke point, so advance with discretion. ",
+        "Operator: HQ wants you to spearhead our assasult using your tank prototype. " +
+            "Reinforcement will be sent to support you in waves, " +
+            "but the enemy will likely follow to compete for ground control so prepare for a tug-of-war situation. " +
+            "Focus on the enemy turrets while our force distracts enemy fire. ",
+        "Operator:  With that said, minimizing casualty by supporting your allies before striking the primary targets" +
+            "is also a viable strategy. Evaluate your tactic and adapt accordingly will be the key to victory."
     };
 
     static string[] asyncSpawnActivatedCutsceneDialog =
     {
         "Operator: The enemy are sending in more than their armored force. " +
-            "HQ confirmed that they are bringing in naval destroyers and modified trains, coming in from 2 sides. " +
+            "HQ confirmed that they are bringing in naval destroyers moving in. " +
             "Watch your flanks."
     };
 

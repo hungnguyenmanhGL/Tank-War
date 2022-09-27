@@ -44,8 +44,11 @@ public class PreLevelDataController : MonoBehaviour
         {
             DestroyLastValue();
             playerStartPoint = GlobalVar.playerSpawnMap[level];
+            float angleToSpawnPlayer = playerStartPoint.z;
+            playerStartPoint.z = 0;
             holdPlayer = true;
-            tankSet = GameObject.Instantiate(tankSetList[tankIndex], playerStartPoint, Quaternion.AngleAxis(0,Vector3.forward));
+            tankSet = GameObject.Instantiate(tankSetList[tankIndex], 
+                playerStartPoint, Quaternion.AngleAxis(angleToSpawnPlayer,Vector3.forward));
             DontDestroyOnLoad(tankSet);
             foreach (Transform child in tankSet.transform)
             {

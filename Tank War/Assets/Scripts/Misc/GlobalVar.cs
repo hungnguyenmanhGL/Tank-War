@@ -141,6 +141,7 @@ public static class GlobalVar
     };
     public static Dictionary<int, Vector3> playerSpawnMap = new Dictionary<int, Vector3>
     {
-        {4, new Vector3(-87,8,0)}
+        {3, new Vector3(-7,-6,-90) },
+        {4, new Vector3(-87,8,-90)}
     };
 }

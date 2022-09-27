@@ -91,12 +91,7 @@ public class PlayerTextBubbleController : MonoBehaviour
     {
         float activeTime = 1f;
         currentStatus = status.SKILL;
-        if (skill == GlobalVar.skill.EMP_BOMB)
-        {
-            
-        }
-        if (skill == GlobalVar.skill.BARRAGE) { }
-
+        comm.text = skillCommMap[skill];
         textBubble.SetActive(true);
         if (currentCoroutine != null) { StopCoroutine(currentCoroutine); }
         currentCoroutine = StartCoroutine(DisableTextBubble(activeTime));

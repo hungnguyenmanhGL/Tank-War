@@ -344,9 +344,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0719901d0dc3317459b71426d2a3e8d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hullType: 0
-  maxHP: 500
-  HP: 500
+  hullType: 3
+  maxHP: 520
+  HP: 520
   armor: 15
   commController: {fileID: 4287196544748878071}
   affectedByEMP:
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairChargeCount: 3
-  repairHP: 180
+  repairHP: 200
 --- !u!1 &4287196543794171630
 GameObject:
   m_ObjectHideFlags: 0

@@ -167,12 +167,15 @@ public class LoadingScreenController : MonoBehaviour
         "Prepare an ambush and recover whatever you can.",
 
         "HQ has authorized a head-on armored assasult to break the gridlock between us and our enemy. " +
+        "Delaying it means giving them more time to fortify their position, as they have already set up several " +
+        "defensive infrastructure and auto-turrets across the battledfield." +
         "You will lead the charge of our second armored squad and support our already engaging forces. " +
-        "Access to some of our latest developed armament is granted, make good use of it. ",
+        "Access to our latest developed weapons is granted, make good use of it. ",
 
-        "To effectively cut off the enemy command chain, we must dispose of their main command center. " +
-            "Knowing that there is a single bridge connecting to the main land, " +
-            "they cannot have evacuated all personnels and documents, but that also means the enemy won't make it easy for us."
+        "To effectively remove the enemy's command chain, we must cut off their main command center and related facilities. " +
+        "But first our priority is to capture the single bridge connecting to the main land, " +
+        "and their static defense must be taken care of. " +
+        "The bridge has yet to be barricaded meaning they plan to send their force to contest with us."
     };
 
     static string[] tips =

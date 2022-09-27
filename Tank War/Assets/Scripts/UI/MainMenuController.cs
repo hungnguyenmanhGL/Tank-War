@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class MainMenuController : MonoBehaviour
     GameObject tankSelectPanel;
 
     [SerializeField]
+    GameObject manualPanel;
+
+    [SerializeField]
     GameObject sharedBackButton;
 
     [SerializeField]
@@ -22,10 +27,11 @@ public class MainMenuController : MonoBehaviour
     [SerializeField]
     List<GameObject> chooseTankButtonList;
 
+    GameObject lastPanel;
     GameObject currentPanel;
 
     int level = -1;
-    const int levelNumAllowedToChooseTank = 4;
+    const int levelNumAllowedToChooseTank = 3;
 
     //prevent multi click leads to multi load
     bool levelLoading = false;
@@ -51,12 +57,15 @@ public class MainMenuController : MonoBehaviour
         currentPanel.SetActive(false);
         levelSelectPanel.SetActive(true);
         sharedBackButton.SetActive(true);
+        lastPanel = mainMenuPanel;
         currentPanel = levelSelectPanel;
     }
 
     public void GetTankSelectPanel()
     {
         tankSelectPanel.SetActive(true);
+        lastPanel = levelSelectPanel;
+        currentPanel = tankSelectPanel;
         sharedBackButton.SetActive(false);
     }
 
@@ -64,12 +73,10 @@ public class MainMenuController : MonoBehaviour
     {
         if (!levelLoading)
         {
-            //levelLoading = true;
-            string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
- 
+          
             for (int i = 0; i < levelButtons.Count; i++)
             {
-                if (levelButtons[i].name == name) level = i + 1;
+                if (levelButtons[i].name.Equals(EventSystem.current.currentSelectedGameObject.name)) level = i + 1;
             }
             Debug.Log(level);
             if (level < levelNumAllowedToChooseTank)
@@ -91,10 +98,9 @@ public class MainMenuController : MonoBehaviour
     {
         if (!levelLoading)
         {
-            string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
             for (int i = 0; i < chooseTankButtonList.Count; i++)
             {
-                if (chooseTankButtonList[i].name == name)
+                if (EventSystem.current.currentSelectedGameObject.name.Equals(chooseTankButtonList[i].name))
                 {
                     PreLevelDataController.instance.SetTankIndex(i);
                 }
@@ -106,10 +112,20 @@ public class MainMenuController : MonoBehaviour
             LoadingScreenController.instance.SetDataLoadDone();
         }
     }
+
+    public void OnManualButtonClicked()
+    {
+        sharedBackButton.SetActive(true);
+        currentPanel.SetActive(false);
+        manualPanel.SetActive(true);
+        lastPanel = mainMenuPanel;
+        currentPanel = manualPanel;
+    }
     
     public void OnSharedBackButtonClicked()
     {
         if (levelLoading) return;
+        lastPanel = null;
         currentPanel.SetActive(false);
         sharedBackButton.SetActive(false);
         mainMenuPanel.SetActive(true);
@@ -119,13 +135,17 @@ public class MainMenuController : MonoBehaviour
     {
         Application.Quit();
     }
-    public void ReturnToLevelSelectPanel()
+
+    //if player return from tank select to level select
+    public void ReturnToPreviousPanel()
     {
         if (levelLoading) return;
         levelLoading = false;
-        tankSelectPanel.SetActive(false);
-        levelSelectPanel.SetActive(true);
-        currentPanel = levelSelectPanel;
+
+        lastPanel.SetActive(true);
         sharedBackButton.SetActive(true);
+        currentPanel.SetActive(false);
+        currentPanel = lastPanel;
+        lastPanel = null;
     }
 }

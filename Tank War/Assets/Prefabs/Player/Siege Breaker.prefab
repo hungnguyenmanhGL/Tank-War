@@ -448,8 +448,8 @@ GameObject:
   - component: {fileID: 205821133018929250}
   - component: {fileID: 205821133018929261}
   - component: {fileID: 205821133018929258}
-  - component: {fileID: 205821133018929252}
   - component: {fileID: 205821133018929259}
+  - component: {fileID: 205821133018929252}
   - component: {fileID: 205821133018929253}
   - component: {fileID: 205821133018929249}
   - component: {fileID: 205821133018929248}
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0719901d0dc3317459b71426d2a3e8d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hullType: 0
+  hullType: 3
   maxHP: 500
   HP: 500
   armor: 30
@@ -546,20 +546,6 @@ MonoBehaviour:
   timeTillReady: 0
   shield: {fileID: 0}
   shieldPoint: {fileID: 0}
---- !u!114 &205821133018929252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 205821133018929255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7fc58641b97f1a47be69b17235e90a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 4
-  rotateSpeed: 4
 --- !u!114 &205821133018929259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,6 +572,20 @@ MonoBehaviour:
   projectile: {fileID: 0}
   shellBody: {fileID: 0}
   firingPoint: {fileID: 205821133173599195}
+--- !u!114 &205821133018929252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205821133018929255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7fc58641b97f1a47be69b17235e90a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 4
+  rotateSpeed: 4
 --- !u!212 &205821133018929253
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairChargeCount: 3
-  repairHP: 120
+  repairHP: 200
 --- !u!1 &205821133086299538
 GameObject:
   m_ObjectHideFlags: 0

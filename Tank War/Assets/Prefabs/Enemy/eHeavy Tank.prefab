@@ -103,7 +103,7 @@ MonoBehaviour:
   shellPrefab: {fileID: 2572134671537904266, guid: 7ea34e7e4d2704647a27780bd577a59c, type: 3}
   shellComp: {fileID: 4046356408634079472, guid: 7ea34e7e4d2704647a27780bd577a59c, type: 3}
   turretRotateSpeed: 4
-  reloadTime: 7
+  reloadTime: 6.5
   firingRange: 0
 --- !u!212 &2273816972061243654
 SpriteRenderer:
