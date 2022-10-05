@@ -44,7 +44,7 @@ public class AutoMovement : MonoBehaviour
     protected float collisionStartTime;
     protected float collisionDuration;
 
-    protected int normalLayer;
+    protected int normalLayer = -1;
     protected int layerToUseWhenMoveFromOutOfBound;
 
     protected enum action { ENGAGE, SCRAMBLE, RALLY}
@@ -54,12 +54,12 @@ public class AutoMovement : MonoBehaviour
     //called this on Start() of inherit class
     protected void SetRallyLayerByTag()
     {
-        if (gameObject.CompareTag(GlobalVar.allyTag))
+        if (gameObject.CompareTag(GlobalVar.allyTag) && normalLayer < 0)
         {
             normalLayer = GlobalVar.aTankLayer;
             layerToUseWhenMoveFromOutOfBound = GlobalVar.aIgnoreLowBlockLayer;
         }
-        if (gameObject.CompareTag(GlobalVar.eTag))
+        if (gameObject.CompareTag(GlobalVar.eTag) && normalLayer < 0)
         {
             normalLayer = GlobalVar.eTankLayer;
             layerToUseWhenMoveFromOutOfBound = GlobalVar.eIgnoreLowBlockLayer;
@@ -131,6 +131,18 @@ public class AutoMovement : MonoBehaviour
     {
         SetRallyLayerByTag();
         gameObject.layer = layerToUseWhenMoveFromOutOfBound;
+        destination = rallyPos;
+        canMove = true;
+        reachedDes = false;
+        bodyRotated = false;
+        stayAtRally = stayAtRallyPoint;
+        currentAction = action.RALLY;
+    }
+
+    virtual public void SetRallyDes(Vector3 rallyPos, bool stayAtRallyPoint, int layerToUse)
+    {
+        normalLayer = gameObject.layer;
+        gameObject.layer = layerToUse;
         destination = rallyPos;
         canMove = true;
         reachedDes = false;

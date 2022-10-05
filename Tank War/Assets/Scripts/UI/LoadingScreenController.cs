@@ -172,16 +172,26 @@ public class LoadingScreenController : MonoBehaviour
         "You will lead the charge of our second armored squad and support our already engaging forces. " +
         "Access to our latest developed weapons is granted, make good use of it. ",
 
-        "To effectively remove the enemy's command chain, we must cut off their main command center and related facilities. " +
-        "But first our priority is to capture the single bridge connecting to the main land, " +
-        "and their static defense must be taken care of. " +
-        "The bridge has yet to be barricaded meaning they plan to send their force to contest with us."
+        "To effectively remove the enemy's command chain, we must cut off their main production lines, command centers and related facilities. " +
+        "But first our priority must be capturing the single bridge connecting to their main land. " +
+        "The bridge has yet to be barricaded, its static defense systems online and the enemy on the other side " +
+        "mean we will have to contest for its control.",
+
+        "Our hunch was correct. Whatever we destroyed in our recent operations was nothing but a small army group. " +
+        "The enemy is attempting to flank us in cooperation with their navy as a large number of armors have landed on our Nothern shore. " +
+        "It was the right decision to send your unit back to reserve, as right now the only defense stationed there is the coastal defense line. " +
+        "Your team is to move out immediately. Hold your ground till reinforcement arrives."
     };
 
     static string[] tips =
     {
-        "Use WASD or Arrow keys to move, left-click to fire or activate your chosen skill. " +
-            "You can also use Q & E hotkeys to select available skills.",
+        "Use WASD or Arrow keys to move, left-click to fire or activate your selected Combat Module. " +
+            "You can also use Q & E hotkeys instead of clicking on buttons to select available ones. ",
+
+        "Skills, or Combat Modules of your tanks are described in the Manual, including their traits. For example: \n" +
+            "Immediate Activation: The module are activated the moment it is selected.\n" +
+            "Manual Targeting: The module requires your target input before activation. " +
+            "This may vary as some modules require a specific target to be indicated.\n",
 
         "EMP - EMP \"Sparkling\" Type 1 shell is a recently fielded ammunition that explodes on contact, " +
             "releasing multiple EMP waves, temporarily disabling crucial battle systems. " +
@@ -193,16 +203,18 @@ public class LoadingScreenController : MonoBehaviour
 
         "Super Tank - \"Peace Breaker\" Prototype Tank, designated MT77 is the latest combination of our and *acquired* technology. " +
            "Protected by the latest [REDACTED] composite hull, it is a moving fortress with multiple advanced firepower systems. " +
-            "Designed to operate on diffirent terrains & situations, it can assume any roles on the battlefield." +
+            "Designed to operate on diffirent terrains & situations, it can assume any roles on the battlefield. " +
             "Due to the cost and complexity, only 1 prototype has been fielded up till now.",
 
         "Super Tank - \"Golden Ram\" V1 was a long discarded model, originally intended to be the first super tank. " +
             "Mainly borrowed from our opposition's design, the tank features an exoframe covered by thick layers of armor. " +
-            "This, however, combined with a rather small hull & engine left no room for extra firepower due to overweight. " +
+            "This, however, combined with a rather small hull & engine left no room for extra firepower in fear of overweight. " +
             "Thanks to our R&D team, changes are made for this juggernaut to finally see some action " +
             "without sacrificing any of its defense strength.",
 
-        "Super Tank - \"Scale Break\" ",
+        "Super Tank - \"Scale Breaker\"  Mark I is greatly influenced by the concept of tank destroyers from WWII, " +
+            "with high caliber artillery grade main gun installed on a mobile hull. " +
+            "Its shell accelerating mechanism is unique in the Breaker series, though reload time is significant longer.",
 
           "Missile ignores obstacles and lock on until it reaches the target. " +
             "Shoot it down if you ever find yourself in its aim."

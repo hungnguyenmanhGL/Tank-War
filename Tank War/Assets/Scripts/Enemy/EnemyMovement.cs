@@ -31,7 +31,7 @@ public class EnemyMovement : AutoMovement
 
         if (target) distanceToTarget = Vector2.Distance(transform.position, target.transform.position);
         if (player) distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
-
+       
     }
 
     protected override void CheckReachedDes()
@@ -43,7 +43,7 @@ public class EnemyMovement : AutoMovement
     {
         RotateTowardDes();
 
-        if (!canMove) return;
+        if (!canMove) {return; }
 
         if (currentAction == action.RALLY)
         {

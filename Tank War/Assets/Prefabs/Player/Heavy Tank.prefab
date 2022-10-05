@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hullType: 2
-  maxHP: 200
-  HP: 200
+  maxHP: 300
+  HP: 300
   armor: 20
   commController: {fileID: 9116092313685372420}
   affectedByEMP:
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairChargeCount: 3
-  repairHP: 80
+  repairHP: 100
 --- !u!114 &3799879176549796766
 MonoBehaviour:
   m_ObjectHideFlags: 0

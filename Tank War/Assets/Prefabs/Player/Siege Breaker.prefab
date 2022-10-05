@@ -494,8 +494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hullType: 3
-  maxHP: 500
-  HP: 500
+  maxHP: 650
+  HP: 650
   armor: 30
   commController: {fileID: 0}
   affectedByEMP:

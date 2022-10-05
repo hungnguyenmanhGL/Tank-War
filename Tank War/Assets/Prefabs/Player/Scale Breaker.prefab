@@ -345,8 +345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hullType: 3
-  maxHP: 520
-  HP: 520
+  maxHP: 650
+  HP: 650
   armor: 15
   commController: {fileID: 4287196544748878071}
   affectedByEMP:
@@ -438,7 +438,7 @@ MonoBehaviour:
   skillDurationEnded: 1
   needUpdate: 0
   activeTime: 0
-  cooldown: 12
+  cooldown: 30
   timeTillReady: 0
   affectedAtkComp: {fileID: 4287196543222753824}
   affectedSkillList: []

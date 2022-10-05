@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AutoAttack : MonoBehaviour
 {
-    public enum fire { NORM, REPEAT}
+    public enum fire { NORM, REPEAT, SALVO}
     [SerializeField]
     protected fire fireMode;
 
@@ -14,7 +14,8 @@ public class AutoAttack : MonoBehaviour
     protected bool readyToFire = true;
     protected bool turretRotatedAtTarget = false;
 
-    protected GameObject target;
+    [HideInInspector]
+    public GameObject target;
     protected float distanceToTarget;
 
     [SerializeField]
@@ -40,7 +41,8 @@ public class AutoAttack : MonoBehaviour
     protected Coroutine currentReloadCoroutine;
 
     //for repeat firing
-    protected const int numOfShotToRepeat = 3;
+    [SerializeField]
+    protected int numOfShotToRepeat = 3;
     protected int numOfShotRepeated = 0;
     protected float timeBetweenRepeat = 0.5f;
 
@@ -60,8 +62,9 @@ public class AutoAttack : MonoBehaviour
     virtual protected void GetNeededComponent()
     {
         if (!moveComp) moveComp = GetComponent<AutoMovement>();
-        if (shellComp) firingRange = shellComp.GetMaxRange();
-        else
+        if (shellComp && shellComp.ammoType == GlobalVar.ammo.GUIDED) firingRange = 35f;
+        else if (shellComp && shellComp.ammoType != GlobalVar.ammo.GUIDED) firingRange = shellComp.GetMaxRange();
+        else if (!shellComp)
         {
             shellComp = GetComponent<Bullet>();
             if (!shellComp)
@@ -84,25 +87,29 @@ public class AutoAttack : MonoBehaviour
 
     protected void RotateTurretAtTarget()
     {
-        if (target && target.activeInHierarchy)
+        if (turret)
         {
-            Vector2 dirToTarget = target.transform.position - turret.transform.position;
-            float angle = Mathf.Atan2(dirToTarget.y, dirToTarget.x) * Mathf.Rad2Deg - 90;
-            if (Quaternion.Angle(Quaternion.Euler(0, 0, angle), turret.transform.rotation) <= 0.5f)
+            if (target && target.activeInHierarchy)
             {
-                turretRotatedAtTarget = true;
+                Vector2 dirToTarget = target.transform.position - turret.transform.position;
+                float angle = Mathf.Atan2(dirToTarget.y, dirToTarget.x) * Mathf.Rad2Deg - 90;
+                if (Quaternion.Angle(Quaternion.Euler(0, 0, angle), turret.transform.rotation) <= 0.5f)
+                {
+                    turretRotatedAtTarget = true;
+                }
+                else
+                {
+                    turretRotatedAtTarget = false;
+                    Quaternion rotateTurretTo = Quaternion.Euler(0, 0, angle);
+                    turret.transform.rotation = Quaternion.Lerp(turret.transform.rotation, rotateTurretTo, turretRotateSpeed * Time.deltaTime);
+                }
             }
-            else
+            if (!target || !target.activeInHierarchy)
             {
-                turretRotatedAtTarget = false;
-                Quaternion rotateTurretTo = Quaternion.Euler(0, 0, angle);
-                turret.transform.rotation = Quaternion.Lerp(turret.transform.rotation, rotateTurretTo, turretRotateSpeed * Time.deltaTime);
+                turret.transform.rotation = Quaternion.Lerp(turret.transform.rotation, transform.rotation, turretRotateSpeed * Time.deltaTime);
             }
         }
-        if (!target || !target.activeInHierarchy)
-        {
-            turret.transform.rotation = Quaternion.Lerp(turret.transform.rotation, transform.rotation, turretRotateSpeed * Time.deltaTime);
-        }
+        else turretRotatedAtTarget = true;
     }
 
     protected void Attack()
@@ -113,7 +120,26 @@ public class AutoAttack : MonoBehaviour
         {
             if (distanceToTarget <= firingRange && turretRotatedAtTarget)
             {
-                foreach (Transform i in firingPointList) GlobalVar.FireShell(shellPrefab.name, i, firingForce);
+                foreach (Transform i in firingPointList)
+                {
+                    if (shellComp.ammoType == GlobalVar.ammo.GUIDED)
+                    {
+                        GlobalVar.FireGuidedShell(shellPrefab.name, i, target);
+                    }
+                    else if (shellComp.ammoType == GlobalVar.ammo.EXPLODE_ON_DES)
+                    {
+
+                        GlobalVar.FireExplodeAtTargetShell(shellPrefab.name, i, firingForce, target.transform.position);
+                    }
+                    else if (shellComp.ammoType == GlobalVar.ammo.RAIN)
+                    {
+                        GlobalVar.FireRainShell(shellPrefab.name, i, target.transform.position);
+                    }
+                    else
+                    {
+                        GlobalVar.FireShell(shellPrefab.name, i, firingForce);
+                    }
+                }
 
                 currentReloadCoroutine = StartCoroutine(SetReadyToFire(reloadTime));
             }
@@ -126,7 +152,62 @@ public class AutoAttack : MonoBehaviour
         {
             if (distanceToTarget <= firingRange && turretRotatedAtTarget)
             {
-                foreach (Transform i in firingPointList) GlobalVar.FireShell(shellPrefab.name, i, firingForce);
+                foreach (Transform i in firingPointList) 
+                {
+                    if (shellComp.ammoType == GlobalVar.ammo.GUIDED)
+                    {
+                        GlobalVar.FireGuidedShell(shellPrefab.name, i, target);
+                    }
+                    else if (shellComp.ammoType == GlobalVar.ammo.EXPLODE_ON_DES)
+                    {
+
+                        GlobalVar.FireExplodeAtTargetShell(shellPrefab.name, i, firingForce, target.transform.position);
+                    }
+                    else if (shellComp.ammoType == GlobalVar.ammo.RAIN)
+                    {
+                        GlobalVar.FireRainShell(shellPrefab.name, i, target.transform.position);
+                    }
+                    else
+                    {
+                        GlobalVar.FireShell(shellPrefab.name, i, firingForce);
+                    }
+                }
+
+                numOfShotRepeated++;
+                if (numOfShotRepeated < numOfShotToRepeat)
+                    currentReloadCoroutine = StartCoroutine(SetReadyToFire(timeBetweenRepeat));
+                if (numOfShotRepeated == numOfShotToRepeat)
+                {
+                    numOfShotRepeated = 0;
+                    currentReloadCoroutine = StartCoroutine(SetReadyToFire(reloadTime));
+                }
+            }
+        }
+    }
+
+    protected void SalvoAttack()
+    {
+        if (!readyToFire) return;
+        if (target && target.activeInHierarchy)
+        {
+
+            if (distanceToTarget <= firingRange && turretRotatedAtTarget)
+            {
+                if (shellComp.ammoType == GlobalVar.ammo.RAIN)
+                {
+                    int firingPointIndex = numOfShotRepeated;
+                    while (firingPointIndex >= firingPointList.Count) firingPointIndex -= firingPointList.Count;
+                    //random a margin number to create salvo-spread effect
+                    float randX = Random.Range(3, 8);
+                    float randY = Random.Range(3, 8);
+                    float dirX = Random.Range(-1f, 1f);
+                    float dirY = Random.Range(-1f, 1f);
+                    if (dirX <= 0) randX = -randX;
+                    if (dirY <= 0) randY = -randY;
+                    Vector3 targetPos = new Vector3(target.transform.position.x + randX, target.transform.position.y + randY, 0);
+
+                    GlobalVar.FireRainShell(shellPrefab.name, firingPointList[firingPointIndex], targetPos);
+                }
 
                 numOfShotRepeated++;
                 if (numOfShotRepeated < numOfShotToRepeat)

@@ -18,7 +18,7 @@ public class Barrage : MonoBehaviour
     List<GameObject> enemyInside = new List<GameObject>();
 
 
-    int dmgPerTick = 50;
+    int dmgPerTick = 70;
 
     //how long between tick
     float timeTillNextDamage = 0.5f;

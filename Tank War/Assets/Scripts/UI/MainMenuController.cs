@@ -18,6 +18,8 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField]
     GameObject manualPanel;
+    [SerializeField]
+    GameObject settingPanel;
 
     [SerializeField]
     GameObject sharedBackButton;
@@ -120,6 +122,15 @@ public class MainMenuController : MonoBehaviour
         manualPanel.SetActive(true);
         lastPanel = mainMenuPanel;
         currentPanel = manualPanel;
+    }
+
+    public void OnSettingButtonClicked()
+    {
+        sharedBackButton.SetActive(true);
+        currentPanel.SetActive(false);
+        settingPanel.SetActive(true);
+        lastPanel = mainMenuPanel;
+        currentPanel = settingPanel;
     }
     
     public void OnSharedBackButtonClicked()

@@ -351,8 +351,8 @@ GameObject:
   - component: {fileID: 2668639192766782354}
   - component: {fileID: 5320685838573703867}
   - component: {fileID: 2668639192766782353}
+  - component: {fileID: 343018435295088179}
   - component: {fileID: 2668639192766782357}
-  - component: {fileID: 2677603499488671071}
   - component: {fileID: 2668639192766782352}
   - component: {fileID: 8087430063005567206}
   - component: {fileID: 2668639192766782356}
@@ -402,9 +402,9 @@ MonoBehaviour:
   armor: 20
   commController: {fileID: 0}
   affectedByEMP:
-  - {fileID: 2668639192766782353}
-  - {fileID: 2677603499488671071}
   - {fileID: 5320685838573703867}
+  - {fileID: 2668639192766782353}
+  - {fileID: 2668639192766782353}
 --- !u!114 &5320685838573703867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMode: 0
   moveComp: {fileID: 5320685838573703867}
+  target: {fileID: 0}
   turret: {fileID: 2668639192123135087}
   firingPointList:
   - {fileID: 2668639192510624388}
@@ -447,7 +448,30 @@ MonoBehaviour:
   shellPrefab: {fileID: 2572134671537904266, guid: 7ea34e7e4d2704647a27780bd577a59c, type: 3}
   shellComp: {fileID: 4046356408634079472, guid: 7ea34e7e4d2704647a27780bd577a59c, type: 3}
   turretRotateSpeed: 4
-  reloadTime: 8.5
+  reloadTime: 8
+  firingRange: 0
+--- !u!114 &343018435295088179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668639192766782359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15f3ac5ebe9fa643af8785b03c5214b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireMode: 0
+  moveComp: {fileID: 5320685838573703867}
+  target: {fileID: 0}
+  turret: {fileID: 0}
+  firingPointList:
+  - {fileID: 352519640624405744}
+  shellPrefab: {fileID: 871718176702205545, guid: 6a9159b475d4b6d448201cb16f8bbe20, type: 3}
+  shellComp: {fileID: 8554366966312275065, guid: 6a9159b475d4b6d448201cb16f8bbe20, type: 3}
+  turretRotateSpeed: 4
+  reloadTime: 12
   firingRange: 0
 --- !u!212 &2668639192766782357
 SpriteRenderer:
@@ -500,21 +524,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2677603499488671071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2668639192766782359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626e4f78569a371459bab958dd80a330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missilePrefab: {fileID: 871718176702205545, guid: 6a9159b475d4b6d448201cb16f8bbe20, type: 3}
-  firingPoint:
-  - {fileID: 352519640624405744}
 --- !u!60 &2668639192766782352
 PolygonCollider2D:
   m_ObjectHideFlags: 0

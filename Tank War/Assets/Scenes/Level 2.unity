@@ -219,7 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbe46325c49183468e97a778fd31dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraAnimator: {fileID: 0}
   boundLock: 1
+  lockOnPlayer: 1
   minX: -35.8
   maxX: 30.8
   minY: -6.2
@@ -4771,7 +4773,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -650, y: 392}
+  m_AnchoredPosition: {x: -694, y: 373}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &336951730
@@ -113727,6 +113729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa9b95185e25fe408b3bbc30d6b1a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectiveControllerList:
+  - {fileID: 1995128602}
   numOfConvoyTotal: 6
   numOfConvoyEscaped: 0
   numOfConvoyDestroyed: 0
@@ -113790,6 +113794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   win: 0
+  gameOver: 0
+  resultDecided: 0
   level: 2
   primaryObjective: 
   objectiveText: {fileID: 3687089527831185165}
@@ -118750,8 +118756,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8fe62b42619cbce4ca4edd4fc321fd34, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -119241,9 +119247,9 @@ RectTransform:
   m_Father: {fileID: 7453991039027227502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 840, y: 358}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -71, y: -194}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4688741039551162458
@@ -119654,8 +119660,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 15ef874e2bf95ef45816943617d2b22c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -119685,7 +119691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -119831,9 +119837,9 @@ RectTransform:
   m_Father: {fileID: 7453991039027227502}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 511}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 513, y: -57}
   m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7082849613235037266
@@ -120542,7 +120548,6 @@ MonoBehaviour:
   levelFinishedCanvas: {fileID: 1363505840}
   missionResult: {fileID: 1449833215}
   levelFinshedNextButton: {fileID: 742119029}
-  objectiveController: {fileID: 1995128602}
   ingameMenu: {fileID: 2400573252194128266}
   shellChangeCanvas: {fileID: 4688741040969710530}
   shellButtons:
@@ -120750,7 +120755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

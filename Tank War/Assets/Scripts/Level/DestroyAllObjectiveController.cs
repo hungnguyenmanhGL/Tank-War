@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class DestroyAllObjectiveController : ObjectiveController
@@ -8,13 +9,16 @@ public class DestroyAllObjectiveController : ObjectiveController
     List<GameObject> targetToDestroy;
 
     //for mission where kill count (target or enemy doesnt spawn immediately)
+    public bool showKillCount = true;
     public bool winByKillCount = false;
     [SerializeField]
     int requiredKillCount;
     int currentKillCount;
+
+    StringBuilder sb;
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
         if (!winByKillCount) { requiredKillCount = targetToDestroy.Count; }
         UpdateObjectiveStat();
@@ -52,7 +56,8 @@ public class DestroyAllObjectiveController : ObjectiveController
                 return;
             }
             if (player && !player.activeInHierarchy) { 
-                gameOver = true; base.OnLevelFinished(false);
+                gameOver = true; 
+                base.OnLevelFinished(false);
                 return;
             }
         }
@@ -84,7 +89,20 @@ public class DestroyAllObjectiveController : ObjectiveController
     {
         base.UpdateObjectiveStat();
         if (objectiveText)
-            objectiveText.text = primaryObjective + currentKillCount + "/" + requiredKillCount;
+        {
+            StringBuilder sb = new StringBuilder(objectiveText.text);
+            sb.Clear();
+            sb.Append(primaryObjective);
+            if (showKillCount)
+            {
+                sb.Append(currentKillCount);
+                sb.Append("/");
+                sb.Append(requiredKillCount);
+                objectiveText.text = sb.ToString();
+            }
+            else objectiveText.text = sb.ToString();
+        }
+         
     }
 
 }

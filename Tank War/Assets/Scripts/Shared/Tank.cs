@@ -20,11 +20,10 @@ public class Tank : MonoBehaviour
     [SerializeField]
     List<MonoBehaviour> affectedByEMP;
 
-    private bool isPlayer = false;
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.CompareTag(GlobalVar.pTag) || commController) isPlayer = true;
+        //if (gameObject.CompareTag(GlobalVar.pTag) || commController) isPlayer = true;
     }
 
     public IEnumerator hitByEMP(float time)

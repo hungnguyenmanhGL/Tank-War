@@ -27,10 +27,10 @@ public class EnemySpawnerHolder : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        OnStart();
+        DeactivateAllSpawners();
     }
 
-    void OnStart()
+    public void DeactivateAllSpawners()
     {
         foreach (Spawner spawner in syncSpawnerList)
         {

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 201597573142923452}
   - component: {fileID: 201597573142923453}
   - component: {fileID: 201597573142923454}
-  - component: {fileID: 201597573142923587}
   - component: {fileID: 201597573142923586}
   m_Layer: 0
   m_Name: Firing Flash
@@ -73,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1780752663
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: d7d131bf3dae064458df939cd301c57a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -104,21 +103,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &201597573142923587
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201597573142923455}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 66ef33819aef25f4ab3f5f9f3cdb6dbd, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &201597573142923586
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class PreLevelDataController : MonoBehaviour
     public Tank hull;
     public PlayerMovement playerMoveComp;
     public ShootBullet playerAtkComp;
+    public Collider2D playerCollider;
     public SuperTankSkillController playerSkillController;
     public Repair playerRepairComp;
 
@@ -59,6 +60,7 @@ public class PreLevelDataController : MonoBehaviour
             hull = player.GetComponent<Tank>();
             playerAtkComp = player.GetComponentInChildren<ShootBullet>();
             playerMoveComp = player.GetComponent<PlayerMovement>();
+            playerCollider = player.GetComponent<Collider2D>();
             playerSkillController = player.GetComponent<SuperTankSkillController>();
             playerRepairComp = player.GetComponent<Repair>();
         }
@@ -74,6 +76,26 @@ public class PreLevelDataController : MonoBehaviour
         Destroy(playerMoveComp);
         Destroy(playerSkillController);
         Destroy(playerRepairComp);
+    }
+
+    IEnumerator DeactivatePlayerInCutScene(float time)
+    {
+        playerCollider.enabled = false;
+        playerMoveComp.enabled = false;
+        playerAtkComp.enabled = false;
+        playerSkillController.enabled = false;
+        yield return new WaitForSeconds(time);
+        playerCollider.enabled = true;
+        playerMoveComp.enabled = true;
+        playerAtkComp.enabled = true;
+        playerSkillController.enabled = true;
+    }
+    public void DeactivatePlayerInCutscene(float time)
+    {
+        if (tankSet)
+        {
+            StartCoroutine(DeactivatePlayerInCutScene(time));
+        }
     }
 
     public void SetTankIndex(int index)

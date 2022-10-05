@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3844460531076637904}
   - component: {fileID: 3844460531076637903}
   - component: {fileID: 3844460531076637902}
-  - component: {fileID: 3844460531076637901}
   - component: {fileID: 4742575509812662894}
   m_Layer: 0
   m_Name: Tank Explosion
@@ -104,21 +103,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &3844460531076637901
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3844460531076637900}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 3a194dd43c5021e4e8a5b39dc1b9c650, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &4742575509812662894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,4 +115,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3d72579d061de4f90c3f2a663840af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liveTime: 0.5
+  liveTime: 0.4

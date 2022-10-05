@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7957284282354106735}
   - component: {fileID: 7957284282354106734}
   - component: {fileID: 7957284282354106730}
-  - component: {fileID: 7957284282354106733}
   - component: {fileID: 7957284282354106732}
   m_Layer: 0
   m_Name: EMP Explosion
@@ -104,21 +103,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &7957284282354106733
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7957284282354106721}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: ddacef58fe99da24687e0abde21eaf4c, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &7957284282354106732
 MonoBehaviour:
   m_ObjectHideFlags: 0

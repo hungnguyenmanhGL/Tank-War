@@ -178,6 +178,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 522392604187585412}
     m_Modifications:
+    - target: {fileID: 2495589895348697660, guid: 821c363508d4008488996f7c11b241b6, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276594250785857961, guid: 821c363508d4008488996f7c11b241b6, type: 3}
+      propertyPath: emp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5534904342832865707, guid: 821c363508d4008488996f7c11b241b6, type: 3}
       propertyPath: m_Name
       value: Player Skill Holder
@@ -225,6 +233,14 @@ PrefabInstance:
     - target: {fileID: 5534904342832865708, guid: 821c363508d4008488996f7c11b241b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632290754165975130, guid: 821c363508d4008488996f7c11b241b6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632290754165975130, guid: 821c363508d4008488996f7c11b241b6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7062971491854392114, guid: 821c363508d4008488996f7c11b241b6, type: 3}
       propertyPath: m_Name

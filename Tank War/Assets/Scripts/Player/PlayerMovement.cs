@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
    
     public const float maxSpeedOnLand = 4f;
-    private float accelerationSpeed = 0.05f;
+    [SerializeField]
+    private float accelerationSpeed = 0.07f;
+    [SerializeField]
     private float deaccelerationSpeed = 1f;
     private float moveSpeedX = 0;
     private float moveSpeedY = 0;

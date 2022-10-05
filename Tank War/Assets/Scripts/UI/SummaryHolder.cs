@@ -25,10 +25,14 @@ public class SummaryHolder : MonoBehaviour
         "Even then, expect fierce resistance the deeper we are in their territory." +
         "There is no other way now. Forward!",
 
-        "Despite our victory, the enemy defense has served its purpose, buying enough time for them to evacuate their command center. " +
-        "Your effort was not in vain though, as they couldn't destroy all documents containing classified info. " +
-        "Looking through those files, HQ is certain that the enemy still have some cards up their sleeves. " +
-        "Now that they are backed into a corner, we better brace for whatever are thrown at us."
+        "The bridge is under our control. However your unit are ordered to return for maintenace. [DECODED]: We just received new intel report. " +
+        "There are evidences suggesting enemy movement from their bases up north while we were occupied by their force. " +
+        "This is inconclusive and we can't afford to risk all our controlled area. But ignoring the signs even the slightest would be disastrous. " +
+        "After witnessing your combat prowess with the new prototype, HQ believes your unit presence would be sufficient in case of such emergency. ",
+
+        "That would have been a disaster if it weren't for you. Unfortunately we don't have time to rest as another enemy movement was sighted. " +
+        "The fact that they aren't willing to even mask anymore it is worrysome. " +
+        "HQ was certain that they still had some cards up their sleeves before this but now... We had better brace for whatever thrown at us." 
     };
 
     [HideInInspector]
@@ -86,9 +90,9 @@ public class SummaryHolder : MonoBehaviour
         else 
         { 
             result.text = successResult;
-            if (level - 1 < 0 || level - 1 >= briefs.Count) summaryBrief.text += "\n" + "N/A";
+            if (level - 1 < 0 || level - 1 >= briefs.Count) summaryBrief.text += "N/A";
             else
-                summaryBrief.text += "\n" + briefs[level - 1]; 
+                summaryBrief.text += briefs[level - 1]; 
 
             string time = GlobalVar.convertTime(timeSpent);
             Debug.Log(time);

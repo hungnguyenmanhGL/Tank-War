@@ -32,7 +32,7 @@ public class InterceptionObjectiveController : ObjectiveController
 
         if (!player) gameOver = true;
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     protected override void OnStartEachLevel()

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 //handle the spawn, escape of target in interception mission
-public class Level2Controller : MonoBehaviour
+public class Level2Controller : LevelController
 {
     [HideInInspector]
     public int numOfConvoyTotal = 6;
@@ -157,6 +157,7 @@ public class Level2Controller : MonoBehaviour
         pointToActiveConvoy();
         updateConvoyStatus();
         checkCurrentLevelCondition();
+        CheckObjectiveStatus();
     }
 
     void pointToActiveConvoy()
@@ -241,10 +242,10 @@ public class Level2Controller : MonoBehaviour
     {
         //if win or gameover -> no need to check anymore
         
-        if (numOfConvoyEscaped > 1)
-        {
-            Debug.Log("Lost, escaped = " + numOfConvoyEscaped);
-        }
+        //if (numOfConvoyEscaped > 1)
+        //{
+        //    Debug.Log("Lost, escaped = " + numOfConvoyEscaped);
+        //}
         if (numOfConvoyDestroyed >= numOfConvoyTotal - maxNumOfConvoyEscaped 
             && activeConvoy.Count == 0 && index == convoy.Count)
         {
@@ -252,64 +253,4 @@ public class Level2Controller : MonoBehaviour
         }
         
     }
-
-    //public void getSummaryReport()
-    //{
-    //    //Time.timeScale = 1;
-    //    SceneManager.LoadScene("Mission Summary");
-    //    StartCoroutine(waitForSceneLoad());
-    //}
-
-    //public IEnumerator waitForSceneLoad()
-    //{
-    //    yield return new WaitForSeconds(1);
-    //    GameObject canvas = GameObject.FindGameObjectWithTag("Report");
-    //    SummaryHolder summaryHolder = canvas.GetComponent<SummaryHolder>();
-    //    SummaryHolder report = summaryHolder;
-    //    if (!win)
-    //    {
-    //        report.result.text = report.failResult;
-    //        report.summaryBrief.text = "Mission failed! We'll get them next time";
-    //    }
-    //    if (win)
-    //    {
-    //        report.result.text = "Mission Accomplished";
-    //        //text already in SummaryHolder class, index = level - 1
-    //        report.summaryBrief.text += "\n" + report.briefs[1];
-    //    }
-    //    report.killCount.text = "KILL COUNT: " + EnemyPool.instance.killCount;
-    //    EnemyPool.instance.enabled = false;
-    //    string time = convertTime();
-    //    Debug.Log(time);
-    //    report.timeRequired.text += time;
-        
-    //    Destroy(this);
-    //}
-
-    //public string convertTime()
-    //{
-    //    string result = " ";
-    //    float timeInSecond = endTime - startTime;
-    //    if (timeInSecond > 3600)
-    //    {
-    //        int timeInHour = (int)timeInSecond / 3600;
-    //        if (timeInHour < 10) result += "0" + timeInHour + ":";
-    //        else result += timeInHour + ":";
-    //        timeInSecond -= timeInHour * 3600;
-    //    }
-    //    else result += "0:";
-        
-    //    if (timeInSecond > 60)
-    //    {
-    //        int timeInMinute = (int)timeInSecond / 60;
-    //        if (timeInMinute < 10) result += "0" + timeInMinute + ":";
-    //        else result += timeInMinute + ":";
-    //        timeInSecond -= timeInMinute * 60;
-    //    }
-    //    else result += "0:";
-
-    //    if (timeInSecond < 10) result += "0" + (int)timeInSecond;
-    //    else result += (int)timeInSecond;
-    //    return result;
-    //}
 }

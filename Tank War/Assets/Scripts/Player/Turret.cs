@@ -5,7 +5,7 @@ using UnityEngine;
 //must be seprated from attack component ShootBullet since it gots disables when using skill
 public class Turret : MonoBehaviour
 {
-    private float rotateSpeed = 1f;
+    //private float rotateSpeed = 1f;
     // Start is called before the first frame update
     void Start()
     {

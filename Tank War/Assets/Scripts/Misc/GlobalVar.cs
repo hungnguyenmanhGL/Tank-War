@@ -5,6 +5,7 @@ using UnityEngine;
 public static class GlobalVar
 {
     public enum skill {EMP_BOMB, BARRAGE, MISSILE_LOCK, SHIELD, SHOOT_LASER, PLASMA_CANNON, SYS_OVERDRIVE};
+    public enum ammo { NORM, GUIDED, EXPLODE_ON_DES, RAIN};
 
     public static string obsBlockShellTag = "Obstacle";
     public static string obsBlockTankTag = "Low Obstacle";
@@ -88,12 +89,65 @@ public static class GlobalVar
         shell.transform.rotation = firingPoint.transform.rotation;
 
         Bullet shellComp = shell.GetComponent<Bullet>();
-        shellComp.SetStartingPoint(firingPoint);
+        if (shellComp)
+        {
+            shellComp.SetStartingPoint(firingPoint);
+        }
 
         Rigidbody2D body = shell.GetComponent<Rigidbody2D>();
-        body.AddForce(firingPoint.up * force, ForceMode2D.Impulse);
+        if (body)
+        {
+            body.AddForce(firingPoint.up * force, ForceMode2D.Impulse);
+        }
 
         return shell;
+    }
+
+    public static GameObject FireExplodeAtTargetShell(string shellName, Transform firingPoint, float force, Vector3 targetPos)
+    {
+        GetFiringFlash(firingPoint);
+
+        GameObject shell = ObjectPool.instance.GetObjectForType(shellName, false);
+        shell.transform.position = firingPoint.transform.position;
+        shell.transform.rotation = firingPoint.transform.rotation;
+
+        Bullet shellComp = shell.GetComponent<Bullet>();
+        if (shellComp)
+        {
+            shellComp.SetStartingPoint(firingPoint);
+            ExplodeAtTargetBullet explodeComp = shellComp as ExplodeAtTargetBullet;
+            if (explodeComp) explodeComp.SetExplodeDestination(targetPos);
+        }
+
+        Rigidbody2D body = shell.GetComponent<Rigidbody2D>();
+        if (body)
+        {
+            body.AddForce(firingPoint.up * force, ForceMode2D.Impulse);
+        }
+
+        return shell;
+    }
+
+    public static GameObject FireRainShell(string shellName, Transform firingPoint, Vector3 targetPos)
+    {
+        GetFiringFlash(firingPoint);
+
+        GameObject shell = ObjectPool.instance.GetObjectForType(shellName, false);
+        shell.transform.position = targetPos;  
+
+        return shell;
+    }
+
+    public static GameObject FireGuidedShell(string missileName, Transform firingPoint, GameObject target)
+    {
+        GetFiringFlash(firingPoint);
+
+        GameObject missile = ObjectPool.instance.GetObjectForType(missileName, false);
+        missile.transform.position = firingPoint.transform.position;
+
+        GuidedMissile guideComp = missile.GetComponent<GuidedMissile>();
+        if (guideComp) guideComp.target = target;
+        return missile;
     }
 
     public static string convertTime(float timeAmount)
@@ -141,7 +195,8 @@ public static class GlobalVar
     };
     public static Dictionary<int, Vector3> playerSpawnMap = new Dictionary<int, Vector3>
     {
-        {3, new Vector3(-7,-6,-90) },
-        {4, new Vector3(-87,8,-90)}
+        {3, new Vector3(-7,-6,-90)},
+        {4, new Vector3(-87,8,-90)},
+        {5, new Vector3(0,0,0)}
     };
 }

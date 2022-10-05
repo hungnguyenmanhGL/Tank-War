@@ -29,9 +29,6 @@ public class UIController : MonoBehaviour
     GameObject levelFinshedNextButton;
 
     [SerializeField]
-    ObjectiveController objectiveController;
-
-    [SerializeField]
     GameObject ingameMenu;
     bool loadingMainMenu = false;
 
@@ -105,11 +102,6 @@ public class UIController : MonoBehaviour
         shellText[0].color = useColorIndicator;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     IEnumerator DisableUIComp(GameObject ui, float time)
     {
@@ -160,6 +152,8 @@ public class UIController : MonoBehaviour
         cutsceneText.text = sb.ToString();
         cutsceneDialog.RemoveAt(0);
     }
+
+
     public void OnCutsceneSkipButtonClicked()
     {
         HideCutsceneCanvas();
@@ -225,12 +219,14 @@ public class UIController : MonoBehaviour
         {
             loadingMainMenu = true;
             Time.timeScale = 1;
+
             
             LoadingScreenController.instance.GetLoadingScreenForLevel(-1);
             LoadingScreenController.instance.SetLoadingOperation(SceneManager.LoadSceneAsync("Main Menu"));
             LoadingScreenController.instance.SetDataLoadDone();
+            //Destroy last used tank set
+            PreLevelDataController.instance.DestroyLastValue();
             //else { SceneManager.LoadScene("Main Menu"); }
-            Destroy(objectiveController.gameObject);
         }
     }
     public void OnContinueButtonClicked()

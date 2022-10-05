@@ -10,7 +10,7 @@ public class OverdriveSkill : EffectSkill
     List<Skill> affectedSkillList;
 
 
-    float reloadTimeReduceMultiplier = 0.4f;
+    float reloadTimeReduceMultiplier = 0.35f;
     void Start()
     {
         OnStart();
@@ -22,7 +22,7 @@ public class OverdriveSkill : EffectSkill
         skillType = type.NO_CURSOR;
         skillName = GlobalVar.skill.SYS_OVERDRIVE;
         allowOtherSkill = true;
-        activeTime = 10f;
+        activeTime = 15f;
         cooldown = 30f;
     }
 

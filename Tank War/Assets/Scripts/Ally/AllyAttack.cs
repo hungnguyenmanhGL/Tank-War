@@ -39,7 +39,7 @@ public class AllyAttack : AutoAttack
     //if object is stationary -> no movement component -> set target yourself
     protected override void SetTargetWithoutMoveComp()
     {
-        Debug.Log("Self Target log");
+        //Debug.Log("Self Target log");
         if (target) distanceToTarget = Vector2.Distance(target.transform.position, transform.position);
 
         if (!target || (target && !target.activeInHierarchy)) { SetRandomTarget(); }

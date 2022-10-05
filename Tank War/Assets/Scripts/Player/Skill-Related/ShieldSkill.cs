@@ -9,6 +9,8 @@ public class ShieldSkill : Skill
 
     [SerializeField]
     Transform shieldPoint;
+
+    Coroutine currentDisableCoroutine;
     
     void Start()
     {
@@ -25,6 +27,12 @@ public class ShieldSkill : Skill
     {
         CheckCooldown();
         if (needUpdate) UpdateSkillEffect();
+
+        if (!shield.activeInHierarchy && currentDisableCoroutine != null)
+        {
+            StopCoroutine(currentDisableCoroutine);
+            currentDisableCoroutine = null;
+        } 
     }
 
     //this skill is cursorless -> activate skill when skill button/hotkey clicked right away
@@ -33,7 +41,7 @@ public class ShieldSkill : Skill
         base.ActivateSkill();
         needUpdate = true;
         shield.SetActive(true);
-        StartCoroutine(DisableSkillRelatedObject(shield, activeTime));
+        currentDisableCoroutine = StartCoroutine(DisableSkillRelatedObject(shield, activeTime));
         skillDurationEnded = true;
     }
 

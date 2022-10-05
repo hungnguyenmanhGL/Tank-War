@@ -8,9 +8,11 @@ using UnityEngine.SceneManagement;
 public class ObjectiveController : MonoBehaviour
 {
     [SerializeField]
-    protected bool win = false;
-    protected bool gameOver = false;
-    protected bool resultDecided = false;
+    public bool win = false;
+    [HideInInspector]
+    public bool gameOver = false;
+    [HideInInspector]
+    public bool resultDecided = false;
 
     public AsyncOperation loadMissionReportOperation;
     protected bool missionReportLoaded = false;
@@ -58,10 +60,6 @@ public class ObjectiveController : MonoBehaviour
 
     virtual protected void UpdateObjectiveStat() { }
 
-    virtual protected void DisableSingleTons()
-    {
-        EnemyPool.instance.enabled = false;
-    }
 
     #region level finished and next button click
 
@@ -72,6 +70,7 @@ public class ObjectiveController : MonoBehaviour
 
         missionKillCount = EnemyPool.instance.killCount;
         EnemyPool.instance.enabled = false;
+        DontDestroyOnLoad(this);
         //load mission report
         loadMissionReportOperation = SceneManager.LoadSceneAsync("Mission Summary");
         if (LoadingScreenController.instance)
@@ -96,12 +95,14 @@ public class ObjectiveController : MonoBehaviour
             }
             //Signal the loading screen that data load progress done -> click to continue
             LoadingScreenController.instance.SetDataLoadDone();
-            //Destroy manually
+            //Destroy manually && the tank set used in that level
+            PreLevelDataController.instance.DestroyLastValue();
             Destroy(this.gameObject);
             Destroy(this);
         }
     }
 
+    //this is moved to level controller
     IEnumerator ShowLevelFinishedCanvasAfterTime(bool win)
     {
         yield return new WaitForSeconds(3f);
@@ -121,8 +122,7 @@ public class ObjectiveController : MonoBehaviour
             
         }
         resultDecided = true;
-        //UIController.instance.GetLevelFinishedCanvas(win);
-        StartCoroutine(ShowLevelFinishedCanvasAfterTime(win));
+        //StartCoroutine(ShowLevelFinishedCanvasAfterTime(win));
     }
 
     #endregion

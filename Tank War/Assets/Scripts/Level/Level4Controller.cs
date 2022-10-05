@@ -12,7 +12,7 @@ public class Level4Controller : LevelController
     [SerializeField]
     float syncSpawnerStartAt = 5f;
     [SerializeField]
-    float asyncSpawnerStartAt = 10f;
+    float asyncSpawnerStartAt = 90f;
 
     float allyLastSpawnAt;
     float allySpawnBreak = 60f;
@@ -31,14 +31,14 @@ public class Level4Controller : LevelController
             "Reinforcement will be sent to support you in waves, " +
             "but the enemy will likely follow to compete for ground control so prepare for a tug-of-war situation. " +
             "Focus on the enemy turrets while our force distracts enemy fire. ",
-        "Operator:  With that said, minimizing casualty by supporting your allies before striking the primary targets" +
+        "Operator:  With that said, support your allies to outnumber the enemy" +
             "is also a viable strategy. Evaluate your tactic and adapt accordingly will be the key to victory."
     };
 
     static string[] asyncSpawnActivatedCutsceneDialog =
     {
         "Operator: The enemy are sending in more than their armored force. " +
-            "HQ confirmed that they are bringing in naval destroyers moving in. " +
+            "HQ confirmed that they are bringing in naval destroyers on 2 sides of the bridges. " +
             "Watch your flanks."
     };
 
@@ -67,6 +67,8 @@ public class Level4Controller : LevelController
             }
             else UIController.instance.SetIngameDialog(null, 3f);
         }
+
+        CheckObjectiveStatus();
     }
 
     void StartSpawningSyncWave()
@@ -96,7 +98,7 @@ public class Level4Controller : LevelController
             asyncSpawnerActivated = true;
             StartSpawningAsyncWave();
             ActivateCutsceneWithText(asyncSpawnActivatedCutsceneDialog);
-            this.enabled = false;
+            //this.enabled = false;
         }
     }
 

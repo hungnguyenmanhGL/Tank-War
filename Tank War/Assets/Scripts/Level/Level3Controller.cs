@@ -28,5 +28,6 @@ public class Level3Controller : LevelController
     void Update()
     {
         ActivateStartCutscene(cutsceneDialog);
+        CheckObjectiveStatus();
     }
 }

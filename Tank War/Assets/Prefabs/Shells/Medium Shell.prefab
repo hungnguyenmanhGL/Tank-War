@@ -48,10 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 30
   activeTime: 2
-  explosion: {fileID: 0}
   emp: 0
   empTime: 5
   convert: 0
+  explosion: {fileID: 6106827479989796110, guid: 6f3c75f99c286114391dd4f6d1245497, type: 3}
+  maxRange: 30
 --- !u!212 &6584125544737127427
 SpriteRenderer:
   m_ObjectHideFlags: 0

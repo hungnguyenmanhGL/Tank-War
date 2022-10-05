@@ -26,7 +26,7 @@ public class PlasmaBasedProjectile : Bullet
                 hull.TakeDamage(dmg);
             }
         }
-        if (collision.gameObject.CompareTag(GlobalVar.shellTag))
+        if (collision.gameObject.CompareTag(GlobalVar.shellTag) || collision.gameObject.CompareTag(GlobalVar.missileTag))
         {
             collision.gameObject.SetActive(false);
         }

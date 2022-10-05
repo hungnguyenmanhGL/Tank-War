@@ -113,10 +113,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371b00e55a0bd85499aecc5fe75e7fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoType: 1
+  dmg: 80
+  emp: 0
+  empTime: 5
+  convert: 0
+  explosion: {fileID: 6106827479989796110, guid: 6f3c75f99c286114391dd4f6d1245497, type: 3}
+  maxRange: 100
   target: {fileID: 0}
-  dmg: 60
   speed: 20
-  liveTime: 10
 --- !u!50 &4820908186879032052
 Rigidbody2D:
   serializedVersion: 4

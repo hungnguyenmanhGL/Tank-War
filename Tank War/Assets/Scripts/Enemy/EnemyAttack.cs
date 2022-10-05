@@ -27,6 +27,7 @@ public class EnemyAttack : AutoAttack
         RotateTurretAtTarget();
         if (fireMode == fire.NORM) Attack();
         if (fireMode == fire.REPEAT) RepeatAttack();
+        if (fireMode == fire.SALVO) SalvoAttack();
     }
 
     protected override void SetRandomTarget()

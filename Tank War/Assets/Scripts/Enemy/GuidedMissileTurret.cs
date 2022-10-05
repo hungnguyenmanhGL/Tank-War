@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GuidedMissileTurret : MonoBehaviour
 {
+    [SerializeField]
     private EnemyMovement hull;
+    [SerializeField]
+    EnemyAttack atkComp;
     private GameObject target;
     [SerializeField]
     GameObject missilePrefab;
@@ -19,12 +22,8 @@ public class GuidedMissileTurret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hull = GetComponent<EnemyMovement>();
-        if (hull)
-        {
-            target = hull.target;
-            engageRange = hull.engageRange;
-        }
+        if (!hull) hull = GetComponent<EnemyMovement>();
+        
     }
 
     IEnumerator setReadyToFire()
@@ -37,7 +36,9 @@ public class GuidedMissileTurret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = hull.target;
+        if (hull && hull.target) target = hull.target;
+
+        if (!hull && atkComp) target = atkComp.target;
 
         if (target && target.activeInHierarchy)
         {
