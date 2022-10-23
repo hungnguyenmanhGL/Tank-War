@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8559179457100531433}
   m_Layer: 8
   m_Name: Energy Shield
-  m_TagString: Shell
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,22 +407,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6810948398407084487, guid: 98364d8b6be9dc84d9f2e2149bbac9c6, type: 3}
   m_PrefabInstance: {fileID: 5054699809485484277}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1458957480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774629124170124489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cebfed6b878f5e4fa43717798f6e7a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmg: 150
-  activeTime: 2
-  explosive: 0
-  emp: 0
-  empTime: 5
-  convert: 0
-  maxRange: 30

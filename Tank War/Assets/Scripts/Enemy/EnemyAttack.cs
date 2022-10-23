@@ -44,10 +44,13 @@ public class EnemyAttack : AutoAttack
             target = AllyHolder.instance.allyList[index];
         }
 
-        if ((!AllyHolder.instance || AllyHolder.instance.allyList.Count == 0) && !player.activeInHierarchy)
+        if ((!AllyHolder.instance || AllyHolder.instance.allyList.Count == 0))
         {
-            target = null;
-            return;
+            if (!player || !player.activeInHierarchy)
+            {
+                target = null;
+                return;
+            }
         }
     }
 
@@ -73,11 +76,11 @@ public class EnemyAttack : AutoAttack
                         minDisToThis = dis;
                     }
                 }
-                if (distanceToPlayer < minDisToThis && player.activeInHierarchy) { tempTarget = player; }
+                if (distanceToPlayer < minDisToThis && player && player.activeInHierarchy) { tempTarget = player; }
 
                 target = tempTarget;
             }
-            if (distanceToPlayer < distanceToTarget && target != player && player.activeInHierarchy) target = player;
+            if (distanceToPlayer < distanceToTarget && player && target != player && player.activeInHierarchy) target = player;
         }
     }
 }

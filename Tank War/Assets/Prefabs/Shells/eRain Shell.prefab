@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1780752663
   m_SortingLayer: 1
-  m_SortingOrder: 5
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 71094b6682d7f544884d338a3e439f4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,6 +103,10 @@ MonoBehaviour:
   convert: 0
   explosion: {fileID: 7531012206862265320, guid: c480bc2a09d87e74ba51afd0998a9061, type: 3}
   maxRange: 300
+  speed: 5
+  normalScale: 3
+  maxScale: 8
+  scaleChangeMultiplier: 10
   timeBeforeActivate: 5
 --- !u!95 &908315767
 Animator:

@@ -210,14 +210,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMode: 0
   moveComp: {fileID: 1449313485201402727}
+  target: {fileID: 0}
   turret: {fileID: 1449313485121021042}
   firingPointList:
   - {fileID: 1449313485649788083}
   shellPrefab: {fileID: 7479803837287177085, guid: a814dc6d772d4464a911648d874474e9, type: 3}
   shellComp: {fileID: 7479803837287177083, guid: a814dc6d772d4464a911648d874474e9, type: 3}
-  turretRotateSpeed: 4
+  turretRotateSpeed: 15
   reloadTime: 6
   firingRange: 0
+  numOfShotToRepeat: 3
 --- !u!212 &1449313485201402725
 SpriteRenderer:
   m_ObjectHideFlags: 0

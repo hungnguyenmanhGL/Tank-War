@@ -19,11 +19,14 @@ public class PreLevelDataController : MonoBehaviour
     public GameObject tankSet;
     public GameObject player;
     public Tank hull;
+    public Turret turret;
     public PlayerMovement playerMoveComp;
     public ShootBullet playerAtkComp;
     public Collider2D playerCollider;
     public SuperTankSkillController playerSkillController;
     public Repair playerRepairComp;
+
+    public bool cameraFollowPlayer = true;
 
     void Start()
     {
@@ -43,7 +46,6 @@ public class PreLevelDataController : MonoBehaviour
         if (tankIndex >= tankSetList.Count || tankIndex < 0) { Debug.Log("Wrong tank set index"); return; }
         else
         {
-            DestroyLastValue();
             playerStartPoint = GlobalVar.playerSpawnMap[level];
             float angleToSpawnPlayer = playerStartPoint.z;
             playerStartPoint.z = 0;
@@ -57,12 +59,7 @@ public class PreLevelDataController : MonoBehaviour
             }
             //Debug.Log(player.name);
             //get all needed component for scripts in level (they can get it from here)
-            hull = player.GetComponent<Tank>();
-            playerAtkComp = player.GetComponentInChildren<ShootBullet>();
-            playerMoveComp = player.GetComponent<PlayerMovement>();
-            playerCollider = player.GetComponent<Collider2D>();
-            playerSkillController = player.GetComponent<SuperTankSkillController>();
-            playerRepairComp = player.GetComponent<Repair>();
+            GetPlayerComponents();
         }
     }
 
@@ -78,6 +75,14 @@ public class PreLevelDataController : MonoBehaviour
         Destroy(playerRepairComp);
     }
 
+    public void DisablePlayerComp()
+    {
+        playerMoveComp.enabled = false;
+        turret.enabled = false;
+        playerAtkComp.enabled = false;
+        playerSkillController.enabled = false;
+        playerRepairComp.enabled = false;
+    }
     IEnumerator DeactivatePlayerInCutScene(float time)
     {
         playerCollider.enabled = false;
@@ -96,6 +101,23 @@ public class PreLevelDataController : MonoBehaviour
         {
             StartCoroutine(DeactivatePlayerInCutScene(time));
         }
+    }
+
+    void GetPlayerComponents()
+    {
+        hull = player.GetComponent<Tank>();
+        turret = player.GetComponentInChildren<Turret>();
+        playerAtkComp = player.GetComponentInChildren<ShootBullet>();
+        playerMoveComp = player.GetComponent<PlayerMovement>();
+        playerCollider = player.GetComponent<Collider2D>();
+        playerSkillController = player.GetComponent<SuperTankSkillController>();
+        playerRepairComp = player.GetComponent<Repair>();
+    }
+
+    public void ChangeCameraMode()
+    {
+        //Debug.Log("Camera changed");
+        cameraFollowPlayer = !cameraFollowPlayer;
     }
 
     public void SetTankIndex(int index)

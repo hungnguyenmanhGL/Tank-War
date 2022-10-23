@@ -123,7 +123,7 @@ public class LoadingScreenController : MonoBehaviour
 
 
     //called this when the data load is finished in class that handle the data loading operation
-    public void SetDataLoadDone() { dataLoadDone = true; Debug.Log("Data loaded signal"); }
+    public void SetDataLoadDone() { dataLoadDone = true; }
 
     public void OnClickedToContinue()
     {
@@ -135,7 +135,7 @@ public class LoadingScreenController : MonoBehaviour
             //Debug.Log("Waiting for click");
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("Clicked to continue");
+                //Debug.Log("Clicked to continue");
                 Time.timeScale = 1;
 
                 StartCoroutine(StartFadingAnimation(false));
@@ -148,8 +148,7 @@ public class LoadingScreenController : MonoBehaviour
     {
         loadingOperation = null;
         loadingScreen.SetActive(false);
-        brief.text = "";
-        loadText.text = loading;
+    
 
         waitingForClick = false;
     }

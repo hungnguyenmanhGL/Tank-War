@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 6810948396898384955}
   - component: {fileID: 6810948396898384953}
   - component: {fileID: 6810948396898384952}
-  - component: {fileID: 6810948396898384954}
+  - component: {fileID: 1458957480}
+  - component: {fileID: 7774259666538188079}
   m_Layer: 8
   m_Name: Plasma Projectile
-  m_TagString: Shell
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +106,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!60 &6810948396898384954
+--- !u!114 &1458957480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810948396898384956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cebfed6b878f5e4fa43717798f6e7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoType: 0
+  dmg: 150
+  emp: 0
+  empTime: 5
+  convert: 0
+  explosion: {fileID: 0}
+  maxRange: 30
+--- !u!60 &7774259666538188079
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,23 +150,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.72499996, y: 0.07}
-      - {x: 0.675, y: 0.12}
-      - {x: 0.60499996, y: 0.16}
-      - {x: 0.295, y: 0.16}
-      - {x: -0.095, y: 0.13}
-      - {x: -0.575, y: 0.08}
-      - {x: -0.85499996, y: 0.049999997}
-      - {x: -0.865, y: 0.03}
-      - {x: -0.865, y: -0.02}
-      - {x: -0.79499996, y: -0.04}
-      - {x: -0.285, y: -0.11}
-      - {x: 0.015, y: -0.14}
-      - {x: 0.345, y: -0.16}
-      - {x: 0.575, y: -0.16}
-      - {x: 0.675, y: -0.13}
-      - {x: 0.73499995, y: -0.049999997}
-      - {x: 0.73499995, y: 0.04}
+    - - {x: 0.08584301, y: 0.6873823}
+      - {x: 0.09733639, y: 0.8206342}
+      - {x: 0.101019256, y: 1.0566912}
+      - {x: 0.048142336, y: 1.1958466}
+      - {x: -0.04402299, y: 1.1958464}
+      - {x: -0.10237639, y: 1.054592}
+      - {x: -0.09951192, y: 0.8280913}
+      - {x: -0.081991106, y: 0.5934408}
+      - {x: -0.051846914, y: 0.29691932}
+      - {x: -0.03936945, y: 0.09835777}
+      - {x: -0.007268846, y: -0.287687}
+      - {x: -0.0007464122, y: -0.36314932}
+      - {x: 0.0065224357, y: -0.318866}
+      - {x: 0.015933026, y: -0.22961244}
+      - {x: 0.052064855, y: 0.23153917}
+      - {x: 0.06816042, y: 0.52690434}
 --- !u!1 &6810948397691489434
 GameObject:
   m_ObjectHideFlags: 0

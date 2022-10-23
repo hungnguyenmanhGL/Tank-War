@@ -65,18 +65,22 @@ public class Tank : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(SHELL_TAG))
         {
-            int dmg = collision.gameObject.GetComponent<Bullet>().dmg;
-            if (commController) commController.WhenGotHit();
-            TakeDamage(dmg);
-
             Bullet b = collision.gameObject.GetComponent<Bullet>();
-            if (b.emp)
+
+            if (b)
+            {
+                int dmg = b.dmg;
+                if (commController) commController.WhenGotHit();
+                TakeDamage(dmg);
+            }
+
+            if (b && b.emp)
             {
                 if (hullType <= Hull.Heavy) StartCoroutine(hitByEMP(b.empTime));
                 else StartCoroutine(hitByEMP(b.empTime / 1));
             }
             //replace enemy tank with ally tank (same tank model with different color and different component)
-            if (b.convert)
+            if (b && b.convert)
             {
                 if (hullType > Hull.Heavy)
                 {

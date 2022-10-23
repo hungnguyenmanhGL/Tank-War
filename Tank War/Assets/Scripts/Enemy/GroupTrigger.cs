@@ -31,7 +31,7 @@ public class GroupTrigger : MonoBehaviour
         {
             if (!activated)
             {
-                Debug.Log("Player activated " + gameObject.name);
+                //Debug.Log("Player activated " + gameObject.name);
                 for (int i = 0; i < force.Count; i++)
                 {
                     //force[i].SetActive(true);

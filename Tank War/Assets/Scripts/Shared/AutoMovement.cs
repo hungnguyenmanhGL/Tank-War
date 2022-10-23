@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -10,6 +11,16 @@ public class AutoMovement : MonoBehaviour
     public GameObject target;
 
     protected Vector3 destination;
+
+    [SerializeField]
+    protected List<Transform> raycastPointList;
+    //list of direction can move to from raycast
+    protected List<GlobalVar.direction> dirList;
+    //direction for next movement
+    protected GlobalVar.direction currentDir;
+    protected string[] collideableLayerArr;
+    protected int layersToCheck;
+
 
     protected bool reachedDes = true;
     protected bool bodyRotated = false;
@@ -31,6 +42,8 @@ public class AutoMovement : MonoBehaviour
     protected float minRandomDistance = 5f;
     [SerializeField]
     protected float maxRandomDistance = 12f;
+    //calculated by sqrt (2 * maxRandomDistance^2)
+    protected float maxRandomDistancePossible = 17f;
 
     protected float maxRandomDistanceWhenEngage = 9f;
 
@@ -64,7 +77,15 @@ public class AutoMovement : MonoBehaviour
             normalLayer = GlobalVar.eTankLayer;
             layerToUseWhenMoveFromOutOfBound = GlobalVar.eIgnoreLowBlockLayer;
         }
-        //Debug.Log(layerToUseWhenMoveFromOutOfBound);
+        collideableLayerArr = new string[GlobalVar.blockMovementLayerArr.Length];
+        for (int i=0; i<collideableLayerArr.Length; i++)
+        {
+            //Debug.Log(GlobalVar.blockMovementLayerArr[i]);
+            collideableLayerArr[i] = LayerMask.LayerToName(GlobalVar.blockMovementLayerArr[i]);
+        }
+        
+        layersToCheck = LayerMask.GetMask(collideableLayerArr);
+        Debug.Log(layersToCheck);
     }
 
     protected void MoveToDes()
@@ -86,6 +107,53 @@ public class AutoMovement : MonoBehaviour
             player = GameObject.FindGameObjectWithTag(GlobalVar.pTag);
         }
     }
+
+    #region decide which direction to move to
+    protected void CheckMoveableDirection()
+    {
+        foreach (Transform i in raycastPointList)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(i.position, i.up, effectiveEngageRange, layersToCheck);
+            if (hit)
+            {
+                if (Vector2.Distance(hit.point, transform.position) <= 10f)
+                {
+                    //do nothing
+                }
+                else
+                {
+                    //add a weight to decide how likely u want to move in that direction
+                    dirList.Add((GlobalVar.direction)raycastPointList.IndexOf(i));
+                }
+            }
+            //if nothing block the raycast -> add to move direction list
+            else
+            {
+                dirList.Add((GlobalVar.direction)raycastPointList.IndexOf(i));
+            }
+        }
+    }
+    //compare the position of target then get the direction
+    protected void CheckMoveableDirectionOnEngage()
+    {
+
+    }
+    //if you want more complex behavior, add a weight to each in dirList then apply a formula
+    protected void DecideMoveDirectionVector()
+    {
+        if (dirList.Count == 1)
+        {
+            currentDir = dirList[0];
+        }
+        if (dirList.Count > 1)
+        {
+            int index = Random.Range(0, dirList.Count);
+            currentDir = dirList[index];
+        }
+        dirList.Clear();
+    }
+    #endregion
+
 
     protected void SetNewRandomDes()
     {
@@ -126,7 +194,7 @@ public class AutoMovement : MonoBehaviour
         }
     }
 
-    //called this when object spawn out of bounds, make sure u have a layer ignore obstacle to set this to, then return to normal layer when reached des
+    //called this when object spawn out of bounds, make sure u have a layer ignoring obstacle to set this object to, then return it to normal layer when reachedDes
     virtual public void SetRallyDes(Vector3 rallyPos, bool stayAtRallyPoint)
     {
         SetRallyLayerByTag();

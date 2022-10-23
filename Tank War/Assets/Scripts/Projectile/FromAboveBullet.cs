@@ -19,6 +19,29 @@ public class FromAboveBullet : ExplodeAtTargetBullet
         StartCoroutine(WaitTillActivate());
     }
 
+    private void Update()
+    {
+        UpdateScale();   
+    }
+
+    protected override void UpdateScale()
+    {
+        switch (flightState)
+        {
+            default:
+            case 0:
+                transform.localScale += Vector3.one * scaleChangeMultiplier * Time.deltaTime;
+                if (transform.localScale.x >= maxScale) { flightState = 1; }
+                break;
+            case 1:
+                transform.localScale -= Vector3.one * scaleChangeMultiplier * Time.deltaTime;
+                if (transform.localScale.x <= normalScale) flightState = 2;
+                break;
+            case 2:
+                break;
+        }
+    }
+
     IEnumerator WaitTillActivate()
     {
         yield return new WaitForSeconds(timeBeforeActivate);

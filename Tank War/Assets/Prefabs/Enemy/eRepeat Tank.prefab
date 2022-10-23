@@ -279,9 +279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hullType: 3
-  maxHP: 200
-  HP: 200
-  armor: 0
+  maxHP: 100
+  HP: 100
+  armor: 20
   commController: {fileID: 0}
   affectedByEMP:
   - {fileID: 882107993436558724}
@@ -321,14 +321,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMode: 1
   moveComp: {fileID: 882107993436558724}
+  target: {fileID: 0}
   turret: {fileID: 8589367772205739142}
   firingPointList:
   - {fileID: 8589367771193111746}
   shellPrefab: {fileID: 2572134671537904266, guid: 7ea34e7e4d2704647a27780bd577a59c, type: 3}
   shellComp: {fileID: 4046356408634079472, guid: 7ea34e7e4d2704647a27780bd577a59c, type: 3}
-  turretRotateSpeed: 4
+  turretRotateSpeed: 15
   reloadTime: 6.5
   firingRange: 0
+  numOfShotToRepeat: 3
 --- !u!212 &8589367770638326236
 SpriteRenderer:
   m_ObjectHideFlags: 0

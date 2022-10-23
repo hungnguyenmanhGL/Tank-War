@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4688741040630477449, guid: ebbcb346323d8e74eb976d16fecc225a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35.40001
+      objectReference: {fileID: 0}
     - target: {fileID: 5929024271726726807, guid: ebbcb346323d8e74eb976d16fecc225a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -723,6 +727,8 @@ MonoBehaviour:
   cameraAnimator: {fileID: 0}
   boundLock: 1
   lockOnPlayer: 1
+  followMouseDirection: 0
+  maxDistanceFromPlayer: 10
   minX: -146
   maxX: -33
   minY: 20.4

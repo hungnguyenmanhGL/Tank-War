@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7531012206862265320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.1, y: 2.7, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 9, y: 9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -55,6 +55,7 @@ MonoBehaviour:
   explosion: {fileID: 0}
   maxRange: 30
   haveDealDmg: 0
+  animTime: 0.4
 --- !u!212 &7531012206862265323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -140,7 +141,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.0947071
+  m_Radius: 1
 --- !u!50 &4641525940359260317
 Rigidbody2D:
   serializedVersion: 4

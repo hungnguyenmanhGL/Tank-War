@@ -51,6 +51,7 @@ public class LevelController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         UIController.instance.GetLevelFinishedCanvas(win);
         Time.timeScale = 0;
+        if (PreLevelDataController.instance && PreLevelDataController.instance.holdPlayer) PreLevelDataController.instance.DisablePlayerComp();
     }
 
     virtual protected void CheckObjectiveStatus()

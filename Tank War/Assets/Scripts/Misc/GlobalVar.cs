@@ -7,14 +7,33 @@ public static class GlobalVar
     public enum skill {EMP_BOMB, BARRAGE, MISSILE_LOCK, SHIELD, SHOOT_LASER, PLASMA_CANNON, SYS_OVERDRIVE};
     public enum ammo { NORM, GUIDED, EXPLODE_ON_DES, RAIN};
 
+    public enum direction { UP, UP_RIGHT, RIGHT, DOWN_RIGHT, DOWN, DOWN_LEFT, LEFT, UP_LEFT};
+
     public static string obsBlockShellTag = "Obstacle";
     public static string obsBlockTankTag = "Low Obstacle";
+
+    public static int obsLayer = 3;
+    public static int lowObsLayer = 10;
 
     public static int eTankLayer = 7;
     public static int eIgnoreLowBlockLayer = 12;
 
     public static int aTankLayer = 6;
     public static int aIgnoreLowBlockLayer = 13;
+
+    public static int[] blockMovementLayerArr = { obsLayer, lowObsLayer, eTankLayer, aTankLayer };
+    public static Dictionary<direction, Vector2> dirToVectorMap = new Dictionary<direction, Vector2>
+    {
+        {direction.UP, new Vector2(0,1) },
+        {direction.UP_RIGHT, new Vector2(1,1) },
+        {direction.RIGHT, new Vector2(1,0) },
+        {direction.DOWN_RIGHT, new Vector2(1,-1) },
+        {direction.DOWN, new Vector2(0,-1) },
+        {direction.DOWN_LEFT, new Vector2(-1,-1) },
+        {direction.LEFT, new Vector2(-1, 0) },
+        {direction.UP_LEFT, new Vector2(-1,1) }
+    };
+    
 
     public static string shellTag = "Shell";
     public static string missileTag = "Missile";
@@ -30,6 +49,7 @@ public static class GlobalVar
 
     public static string missionFailQuote = "Mission failed! We'll get them next time.";
 
+    //call this in update if you want object to chase target
     public static void MoveAndRotateTowardDes(Transform des, Transform obj, float speed)
     {
         Vector2 dirToDes = (des.position - obj.position).normalized;
@@ -41,6 +61,17 @@ public static class GlobalVar
         float angle = Mathf.Atan2(dirToDes.y, dirToDes.x) * Mathf.Rad2Deg - 90;
         obj.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     } 
+    public static void MoveAndRotateTowardDes(Vector3 des, Transform obj, float speed)
+    {
+        Vector2 dirToDes = (des - obj.position).normalized;
+        Vector2 goingToPos = obj.position;
+        goingToPos.x += Time.deltaTime * speed * dirToDes.x;
+        goingToPos.y += Time.deltaTime * speed * dirToDes.y;
+        obj.position = goingToPos;
+
+        float angle = Mathf.Atan2(dirToDes.y, dirToDes.x) * Mathf.Rad2Deg - 90;
+        obj.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
 
     public static GameObject GetEffect(string effectName, Transform i)
     {
@@ -117,12 +148,6 @@ public static class GlobalVar
             shellComp.SetStartingPoint(firingPoint);
             ExplodeAtTargetBullet explodeComp = shellComp as ExplodeAtTargetBullet;
             if (explodeComp) explodeComp.SetExplodeDestination(targetPos);
-        }
-
-        Rigidbody2D body = shell.GetComponent<Rigidbody2D>();
-        if (body)
-        {
-            body.AddForce(firingPoint.up * force, ForceMode2D.Impulse);
         }
 
         return shell;

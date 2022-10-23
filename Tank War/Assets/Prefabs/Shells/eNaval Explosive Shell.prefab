@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4315376620384179529}
   - component: {fileID: 1379443791812961402}
-  - component: {fileID: 6018409755107393967}
-  - component: {fileID: 848873844249142716}
   - component: {fileID: 4379217911684892888}
   - component: {fileID: 2531959948520831829}
   m_Layer: 9
@@ -29,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4880972312844742058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.624481, y: 74.07165, z: 0}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1780752663
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 060a8c4541421c344bfdca4248f799f0, type: 3}
   m_Color: {r: 1, g: 0, b: 0.07058824, a: 1}
   m_FlipX: 0
@@ -86,43 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &6018409755107393967
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4880972312844742058}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.002
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!70 &848873844249142716
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4880972312844742058}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.003224671, y: -0.047133952}
-  m_Size: {x: 0.17560923, y: 0.5461015}
-  m_Direction: 0
 --- !u!114 &4379217911684892888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +103,10 @@ MonoBehaviour:
   convert: 0
   explosion: {fileID: 7531012206862265320, guid: c480bc2a09d87e74ba51afd0998a9061, type: 3}
   maxRange: 50
+  speed: 14
+  normalScale: 5
+  maxScale: 10
+  scaleChangeMultiplier: 4
 --- !u!95 &2531959948520831829
 Animator:
   serializedVersion: 3
